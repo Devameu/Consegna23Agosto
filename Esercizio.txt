@@ -1,0 +1,35 @@
+import datetime
+def assistente_virtuale(comando):
+    if comando == "Qual è la data di oggi?":
+        oggi = datetime.datetoday()  
+        risposta = "La data di oggi è " + oggi.strftime("%d/%m/%Y")
+    elif comando == "Che ore sono?":
+        ora_attuale = datetime.datetime.now().time()  
+        risposta = "L'ora attuale è " + ora_attuale.strftime("%H:%M")
+    elif comando == "Come ti chiami?":
+        risposta = "Mi chiamo Assistente Virtuale"
+    else:
+        risposta = "Non ho capito la tua domanda."  
+    return risposta
+while True
+    comando_utente = input("Cosa vuoi sapere? ")
+    if comando_utente.lower() == "esci":
+        print("Arrivederci!")
+        break
+    else:
+        print(assistente_virtuale(comando_utente))
+
+
+
+Questo programma simula un assistente virtuale che ricevuta in input la domanda si ottiene una risposta e viene chiesta una domanda fino a quando non si chiede di uscire.
+
+Errore di sintassi/logico ->
+Riga 4 (oggi = datetime.datetoday()) all'interno della documentazione di python la funzione datetoday(non esiste) e di conseguenza non puo' essere eseguita l'istruzione riga 5
+Ciclo infinito riga 14 dove l'assistente chiedera' cosa vogliamo sapere fino a quando non digitiamo esci e l'utente sprovvista di questa informazione potrebbe rimanere bloccato nel ciclo infinito e manca anche il : vicino alla riga 14 (while True)
+Non e' presente una gestiore dell'errore per la data o uno generico
+Un altro errore di sintassi/logico e' la mancanza di un testo di input dove consiglia all'utente quali sono le domande possibili
+Soluzioni proposte->
+Cambierei a riga 4 datetime.datetoday() con (datetime.date.today()) per la data
+Aggiungerei i : in riga 14 vicino al true
+Aggiungerei un input che propone le varie opzioni disponibili e come uscire dal loop sfruttando anche il .lower() per gestire eventuari errori di maiuscole e minuscole e cambierei tutte le stringhe in minuscolo
+Aggiungerei un blocco try/except generico per gestire eventuali errori
